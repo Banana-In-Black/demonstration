@@ -1,0 +1,112 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body {
+    background: #262525 url(../img/bg-img.png);
+    color: #c99500;
+    font-family: Courier New;
+}
+
+.container .icon-white {
+    opacity: .5;
+}
+
+.main {
+    background: transparent url(//sites.google.com/site/bananainblack/pic/background/white10.png);
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+}
+
+.icon-step-forward,
+.icon-step-backward {
+    bottom: 50%;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+}
+
+.icon-step-forward {
+    right: -56px;
+}
+
+.context {
+    background: #f8e7bc;
+    box-sizing: border-box;
+    height: 600px;
+    margin-left: 0px;
+    overflow: auto;
+    padding: 15px;
+    transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+
+.context p {
+    color: #000;
+}
+
+.context a:link,
+.context a:visited,
+.context > h4 {
+    color: #b83711;
+}
+
+.context > article {
+    margin-bottom: 40px;
+}
+
+.side-menu {
+    height: 600px;
+    margin-left: 0px;
+    position: relative;
+    transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+
+.side-menu ul {
+    padding: 0px;
+}
+
+.side-menu li > a {
+    border: 1px solid #262525;
+    border-left: none;
+    display: block;
+    font: normal bold 100% Constantia;
+    margin: 0 0 -1px;
+    padding: 5px 10px;
+    transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+
+.side-menu li > a:hover {
+    background: #262525;
+    color: #fff;
+}
+
+.side-menu li:first-child > a {
+    border-radius: 20px 0 0 0;
+    -moz-border-radius: 20px 0 0 0;
+    -webkit-border-radius: 20px 0 0 0;
+}
+
+.side-menu-reserve {
+    margin-right: 70px;
+    width: 0px;
+}
+
+a:hover {
+    color: #7f6000;
+    text-decoration: underline;
+}
+
+a:link,
+a:visited {
+    color: #bf9000;
+}

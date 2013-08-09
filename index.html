@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel='icon' href='favicon.ico' type='image/x-icon'/>
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="container">
+
+            <div class="row main">
+                <nav class="span3 side-menu">
+                    <ul class="nav nav-list">
+                        <li><a href="#Article" class="smooth-anchor">Article</a></li>
+                        <li><a href="#Author" class="smooth-anchor">Author</a></li>
+                        <li><a href="#About" class="smooth-anchor">About</a></li>
+                        <li><a href="//github.com/Banana-In-Black/demonstration">Source Code</a></li>
+                    </ul>
+                    
+                    <i class="icon-step-backward icon-white hide"></i>
+                    <i class="icon-step-forward icon-white hide"></i>
+                </nav>
+                
+                <section class="span9 context">
+                    <h4 id="Article">Article testing</h4>
+                    <article>
+                        <p>This article comes from <a href="//www.drdobbs.com/jvm/creating-and-destroying-java-objects-par/208403883?pgno=3">here.</a></p>
+                        <p>A singleton is simply a class that is instantiated exactly once [Gamma95, p. 127]. Singletons typically represent a system component that is intrinsically unique, such as the window manager or file system. Making a class a singleton can make it difficult to test its clients, as it's impossible to substitute a mock implementation for a singleton unless it implements an interface that serves as its type.</p>
+                        <p>Before release 1.5, there were two ways to implement singletons. Both are based on keeping the constructor private and exporting a public static member to provide access to the sole instance. In one approach, the member is a final field:</p>
+                        <p>The private constructor is called only once, to initialize the public static final field Elvis.INSTANCE. The lack of a public or protected constructor guarantees a "monoelvistic" universe: exactly one Elvis instance will exist once the Elvis class is initialized -- no more, no less. Nothing that a client does can change this, with one caveat: a privileged client can invoke the private constructor reflectively (Item 53) with the aid of the AccessibleObject.setAccessible method. If you need to defend against this attack, modify the constructor to make it throw an exception if it's asked to create a second instance.</p>
+                        <p>In the second approach to implementing singletons, the public member is a static factory method:</p>
+                        <p>All calls to Elvis.getInstance return the same object reference, and no other Elvis instance will ever be created (with the same caveat mentioned above).</p>
+                        <p>The main advantage of the public field approach is that the declarations make it clear that the class is a singleton: the public static field is final, so it will always contain the same object reference. There is no longer any performance advantage to the public field approach: modern Java virtual machine (JVM) implementations are almost certain to inline the call to the static factory method.</p>
+                        <p>One advantage of the factory-method approach is that it gives you the flexibility to change your mind about whether the class should be a singleton without changing its API. The factory method returns the sole instance but could easily be modified to return, say, a unique instance for each thread that invokes it. A second advantage, concerning generic types, is discussed in Item 27. Often neither of these advantages is relevant, and the final-field approach is simpler.</p>
+                        <p>To make a singleton class that is implemented using either of the previous approaches serializable, it is not sufficient merely to add implements Serializable to its declaration. To maintain the singleton guarantee, you have to declare all instance fields transient and provide a readResolve method (Item 77). Otherwise, each time a serialized instance is deserialized, a new instance will be created, leading, in the case of our example, to spurious Elvis sightings. To prevent this, add this readResolve method to the Elvis class:</p>
+                        <p>As of release 1.5, there is a third approach to implementing singletons. Simply make an enum type with one element:</p>
+                        <p>This approach is functionally equivalent to the public field approach, except that it is more concise, provides the serialization machinery for free, and provides an ironclad guarantee against multiple instantiation, even in the face of sophisticated serialization or reflection attacks. While this approach has yet to be widely adopted, a single-element enum type is the best way to implement a singleton.</p>
+                    </article>
+                    <h4 id="Author">About author</h4>
+                    <article>
+                        <p>Yea.. I don't want to talk about this right now, lol. This is just for testing!</p>
+                    </article>
+                    <h4 id="About">About this page</h4>
+                    <article>
+                        <p>This page is made to demonstrate what i learned from some popular javascript library/framework. For now, it used <a href="//html5boilerplate.com/">H5BP</a> as basic template, <a href="//getbootstrap.com/2.3.2/">Bootstrap</a> for layout and CSS style, and <a href="//jquery.com/">jQuery</a>. (<a href="//backbonejs.org/">Backbone.js</a> is going to be added for MVC implemenation)</p>
+                        <p>And sure, i write this with HTML5 and CSS3; there're some awesome features i'd like to use on this page.</p>
+                    </article>
+                </section>
+            </div>
+            
+            <footer>
+                <p>Designed by <a href="http://banana-in-black.blogspot.tw/">Banana-in-Black</a> 2013.</p>
+            </footer>
+            
+        </div> <!-- /container -->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>
