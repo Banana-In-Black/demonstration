@@ -13,7 +13,7 @@ body {
 }
 
 .main {
-    background: transparent url(//sites.google.com/site/bananainblack/pic/background/white10.png);
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
@@ -35,15 +35,18 @@ body {
 }
 
 .context {
-    background: #f8e7bc;
-    box-sizing: border-box;
-    height: 600px;
-    margin-left: 0px;
-    overflow: auto;
-    padding: 15px;
+    margin-left: 0;
+    overflow: hidden;
+    position: relative;
     transition: all 0.2s;
     -moz-transition: all 0.2s;
     -webkit-transition: all 0.2s;
+}
+
+.context > .scroller {
+    box-sizing: border-box;
+    height: 600px;
+    overflow: auto;
 }
 
 .context p {
@@ -52,17 +55,36 @@ body {
 
 .context a:link,
 .context a:visited,
-.context > h4 {
+.context h4 {
     color: #b83711;
 }
 
-.context > article {
-    margin-bottom: 40px;
+.context article {
+    background: #f8e7bc;
+    overflow: hidden;
+    padding: 15px;
+}
+
+.context > header {
+    left: 0;
+    line-height: 15px;
+    margin-left: 0;
+    position: absolute;
+    text-align: center;
+    transition: top 0.2s;
+    -moz-transition: top 0.2s;
+    -webkit-transition: top 0.2s;
+    top: -20px;
+    width: 100%;
+}
+
+.context > header.active {
+    top: 0;
 }
 
 .side-menu {
     height: 600px;
-    margin-left: 0px;
+    margin-left: 0;
     position: relative;
     transition: all 0.2s;
     -moz-transition: all 0.2s;
@@ -70,7 +92,7 @@ body {
 }
 
 .side-menu ul {
-    padding: 0px;
+    padding: 0;
 }
 
 .side-menu li > a {
@@ -98,7 +120,11 @@ body {
 
 .side-menu-reserve {
     margin-right: 70px;
-    width: 0px;
+    width: 0;
+}
+
+.clickable {
+    cursor: pointer;
 }
 
 a:hover {
