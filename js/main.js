@@ -84,22 +84,22 @@ function ArticleCtrl($scope, $http) {
 /* Angular module */
 
 angular.module('demonstration', [])
+    /**
+     * The container of this element must be positioned to make navigator locate in right place.
+     */
     .directive('scrollToToppable', function() {
         return function(scope, element, attrs) {
-            var header = element.siblings('header');
+            var nav = $('<nav class="scroll-to-top"><img src="img/top-button.png" class="clickable"></img></nav>').insertBefore(element);
+            var startPosition = attrs.scrollToToppable ? attrs.scrollToToppable : 20;
             
             element.scroll(function() {
-                var isActive = element.scrollTop() > 32;
-                
-                if(isActive) {
-                    header.addClass('active');
-                } else {
-                    header.removeClass('active');
-                }
+                var isActive = element.scrollTop() > startPosition;
+                nav.width(element.outerWidth());
+                nav.toggleClass('active', isActive);
             });
             
-            header.children('.clickable').click(function() {
+            nav.children('.clickable').click(function() {
                 smoothScrollTo(0, element);
-            })
+            });
         };
     });

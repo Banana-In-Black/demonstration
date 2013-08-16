@@ -44,10 +44,7 @@
                 </nav>
                 
                 <section class="span9 context">
-                    <header>
-                        <img src="img/top-button.png" class="clickable"></img>
-                    </header>
-                    <div class="scroller"  scroll-to-toppable>
+                    <div class="scroller" scroll-to-toppable="100">
                         <article ng-repeat="article in articles | filter:noLink">
                             <h4 id="{{article.anchor}}" ng-bind="article.title"></h4>
                             <div ng-bind-html-unsafe="article.content"></div>

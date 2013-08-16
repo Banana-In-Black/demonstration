@@ -65,20 +65,18 @@ body {
     padding: 15px;
 }
 
-.context > header {
+.scroll-to-top {
     left: 0;
-    line-height: 15px;
-    margin-left: 0;
+    line-height: 14px;
     position: absolute;
     text-align: center;
     transition: top 0.2s;
     -moz-transition: top 0.2s;
     -webkit-transition: top 0.2s;
     top: -20px;
-    width: 100%;
 }
 
-.context > header.active {
+.scroll-to-top.active {
     top: 0;
 }
 
