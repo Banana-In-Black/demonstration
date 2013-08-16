@@ -86,6 +86,7 @@ function ArticleCtrl($scope, $http) {
 angular.module('demonstration', [])
     /**
      * The container of this element must be positioned to make navigator locate in right place.
+     * Currently navigator width set to 100% of parent DOM's width, so it might be some problems if layout is complex.  
      */
     .directive('scrollToToppable', function() {
         return function(scope, element, attrs) {
@@ -94,7 +95,6 @@ angular.module('demonstration', [])
             
             element.scroll(function() {
                 var isActive = element.scrollTop() > startPosition;
-                nav.width(element.outerWidth());
                 nav.toggleClass('active', isActive);
             });
             

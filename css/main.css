@@ -74,6 +74,7 @@ body {
     -moz-transition: top 0.2s;
     -webkit-transition: top 0.2s;
     top: -20px;
+    width: 100%;
 }
 
 .scroll-to-top.active {
