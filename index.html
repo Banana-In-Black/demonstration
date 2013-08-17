@@ -33,9 +33,10 @@
                 <nav class="span3 side-menu">
                     <ul class="nav nav-list">
                         <li ng-repeat="article in articles">
-                            <i ng-if="!article.link" class="icon-chevron-right icon-white"></i>
-                            <a ng-href="{{getHref(article)}}" ng-click="smoothAnchorClick($event, article)" 
-                                ng-bind="article.anchor" tabindex="{{$index + 1}}"></a>
+                            <a ng-href="{{getHref(article)}}" ng-click="smoothAnchorClick($event, article)" tabindex="{{$index + 1}}">
+                                <span ng-bind="article.anchor"></span>
+                                <i ng-if="!article.link" class="icon-chevron-right icon-white pull-right"></i>
+                            </a>
                         </li>
                     </ul>
                     

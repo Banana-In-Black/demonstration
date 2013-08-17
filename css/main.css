@@ -32,14 +32,7 @@ body {
 }
 
 .icon-step-forward {
-    right: -56px;
-}
-
-.icon-chevron-right {
-    margin-top: -7px;
-    position: absolute;
-    top: 50%;
-    right: 5px;
+    right: -65px;
 }
 
 .context {
@@ -100,10 +93,6 @@ body {
 
 .side-menu ul {
     padding: 0;
-}
-
-.side-menu li {
-    position: relative;
 }
 
 .side-menu li > a {
