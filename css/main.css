@@ -24,14 +24,22 @@ body {
 
 .icon-step-forward,
 .icon-step-backward {
-    bottom: 50%;
     cursor: pointer;
+    margin-top: -7px;
     position: absolute;
     right: 5px;
+    top: 50%;
 }
 
 .icon-step-forward {
     right: -56px;
+}
+
+.icon-chevron-right {
+    margin-top: -7px;
+    position: absolute;
+    top: 50%;
+    right: 5px;
 }
 
 .context {
@@ -94,6 +102,10 @@ body {
     padding: 0;
 }
 
+.side-menu li {
+    position: relative;
+}
+
 .side-menu li > a {
     border: 1px solid #262525;
     border-left: none;
@@ -106,9 +118,11 @@ body {
     -webkit-transition: all 0.2s;
 }
 
-.side-menu li > a:hover {
+.side-menu li > a:hover,
+.side-menu li > a:focus {
     background: #262525;
     color: #fff;
+    outline: 0;
 }
 
 .side-menu li:first-child > a {
