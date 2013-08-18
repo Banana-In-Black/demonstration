@@ -47,7 +47,7 @@
                     <i class="icon-step-forward icon-white clickable" ng-cloak 
                             ng-click="sideMenuCollapse=false" ng-hide="!sideMenuCollapse"></i>
                 </nav>
-                {{sideMenuHover}}
+
                 <section class="span9 context" ng-class="{ span9: !sideMenuCollapse, span11: sideMenuCollapse }">
                     <div class="scroller" scroll-to-toppable="100">
                         <article ng-repeat="article in articles | filter:noLink">
