@@ -20,11 +20,12 @@ function smoothScrollTo(target, container) {
 
 /* Angular controller */
 
-function ArticleCtrl($scope, $http) {
+function ArticleCtrl($scope, $http, $timeout) {
     function hasLink(article) { return article.link ? true : false; }
     
     $http.get('data/articles.json').success(function(data) {
         $scope.articles = data;
+        $timeout(function() { $('[data-spy="scroll"]').scrollspy('refresh'); }, 0);
     });
     
     $scope.smoothAnchorClick = function(event, article) {

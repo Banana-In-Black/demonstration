@@ -49,9 +49,9 @@
                 </nav>
 
                 <section class="span9 context" ng-class="{ span9: !sideMenuCollapse, span11: sideMenuCollapse }">
-                    <div class="scroller" scroll-to-toppable="100">
-                        <article ng-repeat="article in articles | filter:noLink">
-                            <h4 id="{{article.anchor}}" ng-bind="article.title"></h4>
+                    <div class="scroller" scroll-to-toppable="100" data-spy="scroll" data-target=".side-menu">
+                        <article id="{{article.anchor}}" ng-repeat="article in articles | filter:noLink">
+                            <h4 ng-bind="article.title"></h4>
                             <div ng-bind-html-unsafe="article.content"></div>
                         </article>
                     </div>
@@ -67,7 +67,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.js"><\/script>')</script>
 
-        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/vendor/bootstrap.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
         <script>window.angular || document.write('<script src="js/vendor/angular.js"><\/script>')</script>
 

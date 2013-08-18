@@ -94,23 +94,32 @@ body {
     padding: 0;
 }
 
-.side-menu li > a {
+.side-menu li > a,
+.side-menu li > a:focus {
+    background: transparent;
     border: 1px solid #262525;
     border-left: none;
     display: block;
     font: normal bold 100% Constantia;
     margin: 0 0 -1px;
+    outline: 0;
     padding: 5px 10px;
     transition: all 0.2s;
     -moz-transition: all 0.2s;
     -webkit-transition: all 0.2s;
 }
 
-.side-menu li > a:hover,
-.side-menu li > a:focus {
+
+.side-menu li > a:hover {
+    background: rgba(38, 37, 37, 0.5);
+    outline: 0;
+}
+
+.side-menu li.active > a,
+.side-menu li.active > a:hover,
+.side-menu li.active > a:focus {
     background: #262525;
     color: #fff;
-    outline: 0;
 }
 
 .side-menu li:first-child > a {
