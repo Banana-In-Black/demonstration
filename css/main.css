@@ -8,7 +8,7 @@ body {
     font-family: Courier New;
 }
 
-.container .icon-white {
+.icon-white {
     opacity: .5;
 }
 
@@ -24,7 +24,6 @@ body {
 
 .icon-step-forward,
 .icon-step-backward {
-    cursor: pointer;
     margin-top: -7px;
     position: absolute;
     right: 5px;
@@ -32,7 +31,7 @@ body {
 }
 
 .icon-step-forward {
-    right: -65px;
+    right: -60px;
 }
 
 .context {
@@ -121,7 +120,7 @@ body {
 }
 
 .side-menu-reserve {
-    margin-right: 70px;
+    margin-right: 65px;
     width: 0;
 }
 

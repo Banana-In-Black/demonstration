@@ -30,21 +30,25 @@
         <div class="container">
 
             <div class="row main" ng-controller="ArticleCtrl">
-                <nav class="span3 side-menu">
-                    <ul class="nav nav-list">
+                <nav class="span3 side-menu" ng-init="sideMenuHover=false; sideMenuCollapse=false"
+                        ng-class="{ 'side-menu-reserve': sideMenuCollapse }" 
+                        ng-mouseenter="sideMenuHover=true" ng-mouseleave="sideMenuHover=false">
+                    <ul class="nav nav-list" ng-hide="sideMenuCollapse">
                         <li ng-repeat="article in articles">
-                            <a ng-href="{{getHref(article)}}" ng-click="smoothAnchorClick($event, article)" tabindex="{{$index + 1}}">
+                            <a ng-href="{{ getHref(article) }}" ng-click="smoothAnchorClick($event, article)" tabindex="{{ $index + 1 }}">
                                 <span ng-bind="article.anchor"></span>
                                 <i ng-if="!article.link" class="icon-chevron-right icon-white pull-right"></i>
                             </a>
                         </li>
                     </ul>
                     
-                    <i class="icon-step-backward icon-white hide"></i>
-                    <i class="icon-step-forward icon-white hide"></i>
+                    <i class="icon-step-backward icon-white clickable" ng-cloak 
+                            ng-click="sideMenuCollapse=true" ng-hide="sideMenuCollapse || !sideMenuHover"></i>
+                    <i class="icon-step-forward icon-white clickable" ng-cloak 
+                            ng-click="sideMenuCollapse=false" ng-hide="!sideMenuCollapse"></i>
                 </nav>
-                
-                <section class="span9 context">
+                {{sideMenuHover}}
+                <section class="span9 context" ng-class="{ span9: !sideMenuCollapse, span11: sideMenuCollapse }">
                     <div class="scroller" scroll-to-toppable="100">
                         <article ng-repeat="article in articles | filter:noLink">
                             <h4 id="{{article.anchor}}" ng-bind="article.title"></h4>
@@ -64,8 +68,8 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.js"><\/script>')</script>
 
         <script src="js/vendor/bootstrap.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
-        <script>window.angular || document.write('<script src="js/vendor/angular.min.js"><\/script>')</script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
+        <script>window.angular || document.write('<script src="js/vendor/angular.js"><\/script>')</script>
 
         <script src="js/main.js"></script>
     </body>
