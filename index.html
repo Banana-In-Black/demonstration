@@ -13,8 +13,8 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <style>
             body {
-                padding-top: 60px;
-                padding-bottom: 40px;
+                padding-top: 20px;
+                padding-bottom: 20px;
             }
         </style>
         <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
@@ -27,17 +27,28 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-        <div class="container">
-
-            <div class="row main" ng-controller="ArticleCtrl">
+        <div class="container" ng-controller="ArticleCtrl">
+            
+            <form name="form" method="POST" class="row form-inline" novalidate>
+                <input type="text" ng-model="input.anchor" placeholder="Anchor (required)" required>
+                <input type="text" ng-model="input.title" placeholder="Title (required)" required>
+                <input type="text" ng-model="input.content" placeholder="Content">
+                <span ng-init="confirmBtn = 'Add'" ng-cloak>
+                    <button class="btn btn-primary" ng-click="addOrUpdateArticle(input)" ng-disabled="form.$invalid" ng-bind="confirmBtn"></button>
+                    <button class="btn" ng-click="cancelUpdate()" ng-show="confirmBtn == 'Update'">Cancel</button>
+                </span>
+                <span class="warning" ng-show="form.$invalid && form.$dirty" ng-cloak>Required fields can't not be empty.</span>
+            </form>
+            
+            <div class="row main">
                 <nav class="span3 side-menu" ng-init="sideMenuHover=false; sideMenuCollapse=false"
                         ng-class="{ 'side-menu-reserve': sideMenuCollapse }" 
                         ng-mouseenter="sideMenuHover=true" ng-mouseleave="sideMenuHover=false">
                     <ul class="nav nav-list" ng-hide="sideMenuCollapse">
                         <li ng-repeat="article in articles">
-                            <a ng-href="{{ getHref(article) }}" ng-click="smoothAnchorClick($event, article)" tabindex="{{ $index + 1 }}">
+                            <a ng-href="#{{ article.anchor }}" ng-click="smoothAnchorClick($event, article); fillInput(article, $index)" tabindex="{{ $index + 1 }}">
                                 <span ng-bind="article.anchor"></span>
-                                <i ng-if="!article.link" class="icon-chevron-right icon-white pull-right"></i>
+                                <i class="icon-remove icon-white pull-right" ng-click="articles.splice($index, 1)"></i>
                             </a>
                         </li>
                     </ul>
@@ -50,7 +61,7 @@
 
                 <section class="span9 context" ng-class="{ span9: !sideMenuCollapse, span11: sideMenuCollapse }">
                     <div class="scroller" scroll-to-toppable="100" data-spy="scroll" data-target=".side-menu">
-                        <article id="{{article.anchor}}" ng-repeat="article in articles | filter:noLink">
+                        <article id="{{article.anchor}}" ng-repeat="article in articles">
                             <h4 ng-bind="article.title"></h4>
                             <div ng-bind-html-unsafe="article.content"></div>
                         </article>

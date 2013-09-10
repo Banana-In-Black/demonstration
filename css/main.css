@@ -2,6 +2,10 @@
    Author's custom styles
    ========================================================================== */
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 body {
     background: #262525 url(../img/bg-img.png);
     color: #c99500;
@@ -44,12 +48,15 @@ body {
 }
 
 .context > .scroller {
+	background: #f8e7bc;
     box-sizing: border-box;
-    height: 600px;
+    height: 500px;
     overflow: auto;
+    padding-bottom: 60px;
 }
 
-.context p {
+.context p,
+.context div {
     color: #000;
 }
 
@@ -60,7 +67,6 @@ body {
 }
 
 .context article {
-    background: #f8e7bc;
     overflow: hidden;
     padding: 15px;
 }
@@ -82,7 +88,7 @@ body {
 }
 
 .side-menu {
-    height: 600px;
+    height: 500px;
     margin-left: 0;
     position: relative;
     transition: all 0.2s;
@@ -109,12 +115,12 @@ body {
     -webkit-transition: all 0.2s;
 }
 
-
 .side-menu li > a:hover {
     background: rgba(38, 37, 37, 0.5);
     outline: 0;
 }
 
+.side-menu li > a:focus,
 .side-menu li.active > a,
 .side-menu li.active > a:hover,
 .side-menu li.active > a:focus {

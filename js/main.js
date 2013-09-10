@@ -21,26 +21,48 @@ function smoothScrollTo(target, container) {
 /* Angular controller */
 
 function ArticleCtrl($scope, $http, $timeout) {
-    function hasLink(article) { return article.link ? true : false; }
-    
     $http.get('data/articles.json').success(function(data) {
         $scope.articles = data;
-        $timeout(function() { $('[data-spy="scroll"]').scrollspy('refresh'); }, 0);
     });
     
     $scope.smoothAnchorClick = function(event, article) {
-        if(!hasLink(article)) {
-            event.preventDefault();
-            smoothScrollTo(event.target.hash, '.scroller');
+        event.preventDefault();
+        smoothScrollTo(event.target.hash, '.scroller');
+    };
+    
+    function inputReset() {
+        $scope.input = {};
+        $scope.form.$setPristine();
+    }
+    
+    $scope.addOrUpdateArticle = function(input) {
+        switch($scope.confirmBtn) {
+            case 'Update':
+                if($scope.updateIndex > 0) {
+                    $scope.articles[$scope.updateIndex] = angular.copy(input);
+                }
+                break;
+                
+            case 'Add':
+                $scope.articles.push(angular.copy(input));
+                inputReset();
+                break;
+                
+            default:
+                throw Error('Undefined operation.'); 
         }
     };
     
-    $scope.getHref = function(article) {
-        return hasLink(article) ? article.link : '#' + article.anchor;
+    $scope.fillInput = function(article, index) {
+        $scope.updateIndex = index;
+        $scope.confirmBtn = 'Update';
+        $scope.input = angular.copy(article);
     };
     
-    $scope.noLink = function(article) {
-        return !hasLink(article);
+    $scope.cancelUpdate = function() {
+        $scope.updateIndex = -1;
+        $scope.confirmBtn = 'Add';
+        inputReset();
     };
 }
 
