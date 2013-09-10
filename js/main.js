@@ -20,7 +20,7 @@ function smoothScrollTo(target, container) {
 
 /* Angular controller */
 
-function ArticleCtrl($scope, $http, $timeout) {
+function ArticleCtrl($scope, $http) {
     $http.get('data/articles.json').success(function(data) {
         $scope.articles = data;
     });
