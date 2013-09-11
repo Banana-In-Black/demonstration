@@ -45,7 +45,7 @@
                         ng-class="{ 'side-menu-reserve': sideMenuCollapse }" 
                         ng-mouseenter="sideMenuHover=true" ng-mouseleave="sideMenuHover=false">
                     <ul class="nav nav-list" ng-hide="sideMenuCollapse">
-                        <li ng-repeat="article in articles">
+                        <li ng-repeat="article in articles" ng-cloak>
                             <a ng-href="#{{ article.anchor }}" ng-click="smoothAnchorClick($event, article); fillInput(article, $index)" tabindex="{{ $index + 1 }}">
                                 <span ng-bind="article.anchor"></span>
                                 <i class="icon-remove icon-white pull-right" ng-click="articles.splice($index, 1)"></i>
